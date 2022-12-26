@@ -653,73 +653,267 @@
 # наследование
 
 
-class Point(object):
+# class Point(object):
+#     def __init__(self, x=0, y=0):
+#         self.__x = x
+#         self.__y = y
+#
+#     def __str__(self):
+#         return f'({self.__x}), ({self.__y})'
+#
+# # print(issubclass(Point, object))
+# # print(dir(Point))
+#
+#
+# class Prop:
+#     def __init__(self, sp:Point, ep:Point, color:str='red', width:int=1):
+#         print('инициализатор базового класса')
+#         self._sp = sp
+#         self._ep = ep
+#         self._color = color
+#         self.__width = width
+#
+#     def get_width(self):
+#         return self.__width
+#
+# class Line(Prop):
+#     def __init__(self, *args):
+#         print('переопределенный инициализатор line')
+#         # Prop.__init__(self, *args)
+#         super().__init__(*args)
+#
+#     def draw_line(self) -> str:
+#         return f'рисование линии: {self._sp}, {self._ep}, {self._color}, {self.get_width()}'
+#
+#
+# class Rect(Prop):
+#     def draw_rect(self) -> str:
+#         print(f'рисование линии: {self._sp}, {self._ep}, {self._color}, {self.get_width()}')
+#
+#
+# line = Line(Point(1, 2), Point(10, 20))
+# print(line.draw_line())
+# rect = Rect(Point(30, 40), Point(70, 80))
+# rect.draw_rect()
+#
+# # DRY (Don't Repeat you self) - не повторяйся
+
+
+# class Figure:
+#     def __init__(self, color):
+#         self.__color = color
+#
+#     def __str__(self):
+#         return self.__color
+#
+#     @property
+#     def color(self):
+#         return self.__color
+#
+#     @color.setter
+#     def color(self, c):
+#         self.__color = c
+#
+#
+# class Rectangle(Figure):
+#     def __init__(self, width, height, color):
+#         super().__init__(color)
+#         self.__width = width
+#         self.__height = height
+#
+#     def __str__(self):
+#         return f'{self.__width}, {self.__height}, {self.color}'
+#
+#     @property
+#     def width(self):
+#         return self.__width
+#
+#     @width.setter
+#     def width(self, w):
+#         if w > 0:
+#             self.__width = w
+#         else:
+#             raise ValueError('ширина должна быть положительной')
+#
+#     @property
+#     def height(self):
+#         return self.__height
+#
+#     @height.setter
+#     def height(self, h):
+#         if h > 0:
+#             self.__height = h
+#         else:
+#             raise ValueError('высота должна быть положительной')
+#
+#     def area(self):
+#         return self.__width * self.__height
+#
+# rect = Rectangle(10, 20, 'green')
+# print(rect.width)
+# print(rect.height)
+# print(rect.color)
+# rect.color = 'red'
+# print(rect)
+# rect.width = 5
+# print(rect)
+# print(rect.area())
+
+
+
+# class Rect:
+#     def __init__(self, width, height):
+#         self.width = width
+#         self.height = height
+#
+#     def show_rect(self):
+#         print(f'прямоугольник:\nШирина: {self.width}\nВысота: {self.height}')
+#
+#
+# class RectFon(Rect):
+#     def __init__(self, width, height, background):
+#         self.fon = background
+#         super().__init__(width, height)
+#
+#     def show_rect(self):
+#         super().show_rect()
+#         print('фон:', self.fon)
+
+
+# class RectBorder(Rect):
+#     def __init__(self, width, height, border):
+#         self.border = border
+#         super().__init__(width, height)
+#
+#     def show_rect(self):
+#         super().show_rect()
+#         print('рамка:', self.border)
+
+
+# class RectFonBorder(RectFon):
+#     def __init__(self, width, height, background, border):
+#         super().__init__(width, height, background)
+#         self.border = border
+#
+#     def show_rect(self):
+#         super().show_rect()
+#         print('рамка:', self.border)
+
+
+# shape = Rect(100, 200)
+# shape.show_rect()
+#
+# shape1 = RectFon(400, 300, 'yellow')
+# shape1.show_rect()
+# print()
+# # shape2 = RectBorder(600, 500, '1px solid red')
+# # shape2.show_rect()
+#
+# shape3 = RectFonBorder(600, 500, 'yellow', '1px solid red')
+# shape3.show_rect()
+
+
+# class Vector(list):
+#     def __str__(self):
+#         return ''.join(map(str, self))
+#
+#
+# v = Vector([1, 2, 3])
+# print(v)
+# print(type(v))
+
+
+
+
+
+# перегрузка методов
+
+
+# class Point:
+#     def __init__(self, x=0, y=0):
+#         self.__x = x
+#         self.__y = y
+#
+#     def __str__(self):
+#         return f"({self.__x}, {self.__y})"
+#
+#     def is_int(self):
+#         if not isinstance(self.__x, int) or not isinstance(self.__y, int):
+#             print('координты должны быть целым числом')
+#             return False
+#         return True
+#
+#
+# class Prop:
+#     def __init__(self, sp: Point, ep: Point, color: str = "red", width: int = 1):
+#         self._sp = sp
+#         self._ep = ep
+#         self._color = color
+#         self._width = width
+#
+#     def set_coord(self, sp, ep = None):
+#         if ep is None:
+#             if sp.is_int():
+#                 self._sp = sp
+#         else:
+#             if sp.is_int() and ep.is_int():
+#                 self._sp = sp
+#                 self._ep = ep
+#
+#
+# class Line(Prop):
+#
+#     def draw_line(self):
+#         print(f"Рисование линии: {self._sp}, {self._ep}, {self._color}, {self._width}")
+#
+#
+# line = Line(Point(1, 2), Point(10, 20))
+# line.draw_line()
+# line.set_coord(Point(20, 40), Point(50, 60))
+# line.draw_line()
+# line.set_coord(Point(200, 400))
+# line.draw_line()
+
+
+
+
+# абстрактные методы
+
+
+class Point:
     def __init__(self, x=0, y=0):
         self.__x = x
         self.__y = y
 
     def __str__(self):
-        return f'({self.__x}), ({self.__y})'
+        return f"({self.__x}, {self.__y})"
 
-# print(issubclass(Point, object))
-# print(dir(Point))
+    def is_int(self):
+        if not isinstance(self.__x, int) or not isinstance(self.__y, int):
+            print("Координаты должны быть целочисленными")
+            return False
+        return True
 
 
 class Prop:
-    def __init__(self, sp:Point, ep:Point, color:str='red', width:int=1):
-        print('инициализатор базового класса')
+    def __init__(self, sp: Point, ep: Point, color: str = "red", width: int = 1):
         self._sp = sp
         self._ep = ep
         self._color = color
-        self.__width = width
+        self._width = width
 
-    def get_width(self):
-        return self.__width
+    def draw_line(self):
+        raise NotImplementedError('в дочернем классе должен быть определен метод draw')
+
 
 class Line(Prop):
-    def __init__(self, *args):
-        print('переопределенный инициализатор line')
-        # Prop.__init__(self, *args)
-        super().__init__(*args)
-
-    def draw_line(self) -> str:
-        return f'рисование линии: {self._sp}, {self._ep}, {self._color}, {self.get_width()}'
-
-
-class Rect(Prop):
-    def draw_rect(self) -> str:
-        print(f'рисование линии: {self._sp}, {self._ep}, {self._color}, {self.get_width()}')
+    # def draw_line(self):
+    #     print(f"Рисование линии: {self._sp}, {self._ep}, {self._color}, {self._width}")
+    pass
 
 
 line = Line(Point(1, 2), Point(10, 20))
-print(line.draw_line())
-rect = Rect(Point(30, 40), Point(70, 80))
-rect.draw_rect()
-
-# DRY (Don't Repeat you self) - не повторяйся
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+line.draw_line()
 
 
 
