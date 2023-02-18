@@ -276,65 +276,128 @@ import csv
 
 
 
-import requests
-from bs4 import BeautifulSoup
-import re
+# import requests
+# from bs4 import BeautifulSoup
+# import re
+#
+# def get_html(url):
+#     r = requests.get(url)
+#     return r.text
+#
+# def refine_cy(s):
+#     return s.split()[-1]
+#
+# def refine_snippet(s):
+#     return re.sub(r'\\U', '', s)
+#
+# def write_csv(data):
+#     with open('plugins.csv', 'a') as f:
+#         writer = csv.writer(f, lineterminator='\r', delimiter=';')
+#         writer.writerow((data['name'], data['url'], data['snippet'], data['cy']))
+#
+# def get_data(html):
+#     soup = BeautifulSoup(html, 'lxml')
+#     elements = soup.find_all('article', class_='plugin-card')
+#     for el in elements:
+#         try:
+#             name = el.find('h3').text
+#         except ValueError:
+#             name = ''
+#
+#         try:
+#             url = el.find('h3').find('a').get('href')
+#         except ValueError:
+#             url = ''
+#
+#
+#         try:
+#             snippet = el.find('div', class_='entry-excerpt').text.strip()
+#             snippet1 = refine_snippet(snippet)
+#         except ValueError:
+#             snippet1=''
+#
+#         try:
+#             c = el.find('span', class_='tested-with').text.strip()
+#             cy = refine_cy(c)
+#         except ValueError:
+#             c=''
+#
+#         data = {
+#             'name': name,
+#             'url': url,
+#             'snippet': snippet1,
+#             'cy': cy
+#         }
+#         write_csv(data)
+#
+# def main():
+#     for i in range(12,13):
+#         url = f'https://ru.wordpress.org/plugins/browse/blocks/page/{i}/'
+#         get_data(get_html(url))
+#
+# if __name__ == '__main__':
+#     main()
 
-def get_html(url):
-    r = requests.get(url)
-    return r.text
-
-def refine_cy(s):
-    return s.split()[-1]
-
-def refine_snippet(s):
-    return re.sub(r'\\U', '', s)
-
-def write_csv(data):
-    with open('plugins.csv', 'a') as f:
-        writer = csv.writer(f, lineterminator='\r', delimiter=';')
-        writer.writerow((data['name'], data['url'], data['snippet'], data['cy']))
-
-def get_data(html):
-    soup = BeautifulSoup(html, 'lxml')
-    elements = soup.find_all('article', class_='plugin-card')
-    for el in elements:
-        try:
-            name = el.find('h3').text
-        except ValueError:
-            name = ''
-
-        try:
-            url = el.find('h3').find('a').get('href')
-        except ValueError:
-            url = ''
+#
+# from parsers import Parsers
+#
+#
+# def main():
+#     pars = Parsers('https://www.ixbt.com/live/index/news/', 'new.txt')
+#     pars.run()
+#
+#
+# if __name__ == '__main__':
+#     main()
 
 
-        try:
-            snippet = el.find('div', class_='entry-excerpt').text.strip()
-            snippet1 = refine_snippet(snippet)
-        except ValueError:
-            snippet1=''
 
-        try:
-            c = el.find('span', class_='tested-with').text.strip()
-            cy = refine_cy(c)
-        except ValueError:
-            c=''
+#MVC (model view controller)
 
-        data = {
-            'name': name,
-            'url': url,
-            'snippet': snippet1,
-            'cy': cy
-        }
-        write_csv(data)
 
-def main():
-    for i in range(12,13):
-        url = f'https://ru.wordpress.org/plugins/browse/blocks/page/{i}/'
-        get_data(get_html(url))
 
-if __name__ == '__main__':
-    main()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
