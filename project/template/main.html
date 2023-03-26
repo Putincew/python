@@ -1,0 +1,9 @@
+{%include 'header.html' ignore missing %}
+{%import 'dialog.html' as old%}
+<ul>
+  {% for u in users %}
+  <li>{{u.name}}</li>
+  {%endfor%}
+</ul>
+{{old('внимание', "это текст")}}
+{%include%}
