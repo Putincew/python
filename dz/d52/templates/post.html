@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{{ super() }}
+{{ post }}
+<p>{{ price }} р/мес.</p>
+<p><a href="{{'/'}}" class="back"><--Назад на главную</a></p>
+
+{% endblock %}

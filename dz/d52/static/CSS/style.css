@@ -1,0 +1,108 @@
+body{
+background:#efefcc;
+margin: 0;
+padding: 0;
+font-family:Verdana, Geneva, Tahoma, sans-serif;
+
+}
+
+.menu{
+    display:flex ;
+    justify-content: space-around;
+    list-style: none;
+    background: rgb(42, 88, 137);
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    padding: 20px;
+    margin-top: 0;
+}
+
+.menu a{
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+}
+
+ul{
+    display: flex;
+    
+    justify-content: space-between;
+    list-style: none;
+    padding: 0;
+}
+
+p.title a, .podr a{
+    display: block;
+
+}
+
+p.title, .podr{
+    margin: 0;
+    text-align: center;
+    background: rgb(42, 88, 137);
+    
+    
+}
+
+.podr{
+    padding: 10px;
+    margin: 15px;
+}
+
+p.title{
+    border-top-right-radius: 7px;
+    border-top-left-radius: 7px;
+}
+.podr{
+    border-radius: 7px;
+    
+   
+   
+}
+
+.annonce{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    margin-top: -1px;
+    border-bottom-right-radius: 7px;
+    border-bottom-left-radius: 7px;
+    padding-top: 20px;
+    background: #FFF;
+    height: 350px;
+    min-width: 250px;
+    
+}
+
+p>a{
+    text-decoration: none;
+    color: #fff
+}
+
+li>p, li div{
+    border: 1px solid #CCC;
+    padding: 10px 20px;
+}
+
+.block{
+    margin: 15px;
+    border-radius: 10px;
+   
+}
+
+.back{
+    color: blue;
+}
+
+
+.content{
+    margin:0 auto;
+    max-width: 1200px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+p{
+    font-size: 20px;
+}
+h1{font-size: 32px}
+li{font-size: 20px;}
